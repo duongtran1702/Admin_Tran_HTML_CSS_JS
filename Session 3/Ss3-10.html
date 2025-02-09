@@ -11,56 +11,64 @@
 <body>
     <form action="">
         <label for="name">Fullname:</label>
-        <input type="text" style="margin-left: 105px;margin-bottom: 5px;" name="name"><br>
+        <input type="text" style="margin-left: 105px;margin-bottom: 5px;" name="name" id="name"><br>
+
+        
         <label for="dob">Date of birth:</label>
-        <input type="date" style="margin-left: 83.5px; margin-bottom: 5px;" name="dob"><br>
+        <input type="date" style="margin-left: 83.5px; margin-bottom: 5px;" name="Date of birth" id="dob"><br>
+        
         <label for="gender">Gender:</label>
-        <input type="radio" style="margin-left: 117px; margin-bottom: 5px;" name="gender">
+        <input type="radio" style="margin-left: 117px; margin-bottom: 5px;" name="Gender" value="Male" id="gender">
         <label for="gender">Male</label>
-        <input type="radio" style="margin-left: 55px; margin-bottom: 5px;" name="gender">
+        <input type="radio" style="margin-left: 55px; margin-bottom: 5px;" name="Gender" value="Female" id="gender">
         <label for="gender">Female</label><br>
-        <label for="">Phone:</label>
-        <input type="tel" style="margin-left: 124.5px; margin-bottom: 5px;" pattern="[0-9]{10}"><br>
+        
+        <label for="Phone">Phone:</label>
+        <input type="tel" style="margin-left: 124.5px; margin-bottom: 5px;" pattern="[0-9]{10}" name="Telephone" id="Phone"><br>
+        
         <label for="email">Email:</label>
-        <input type="email" style="margin-left: 126.5px; margin-bottom: 5px;" name="email"><br>
-        <label for="">Company name:</label>
-        <input type="text" style="margin-left: 63.9px;margin-bottom: 5px;" name=""><br>
-        <label for="">Role in company:</label>
-        <select name="" id="" style="margin-left: 55.5px;margin-bottom: 5px;">
-            <option value="" selected>Chief Executive Officer (CEO) </option>
-            <option value="">Chief Financial Officer (CFO)</option>
-            <option value="">Human Resources Manager (HR Manager)</option>
-            <option value="">Marketing Manager</option>
-            <option value="">Operations Manager</option>
+        <input type="email" style="margin-left: 126.5px; margin-bottom: 5px;" name="email" id="email"><br>
+        
+        <label for="Company name">Company name:</label>
+        <input type="text" style="margin-left: 63.9px;margin-bottom: 5px;" name="Company name" id="Company name"><br>
+        
+        <label for="Role in company">Role in company:</label>
+        <select name="Role in company" id="Role in company" style="margin-left: 55.5px;margin-bottom: 5px;">
+            <option value="Chief Executive Officer (CEO)" selected>Chief Executive Officer (CEO) </option>
+            <option value="Chief Financial Officer (CFO)">Chief Financial Officer (CFO)</option>
+            <option value="Human Resources Manager (HR Manager)">Human Resources Manager (HR Manager)</option>
+            <option value="Marketing Manager">Marketing Manager</option>
+            <option value="Operations Manager">Operations Manager</option>
         </select><br>
-        <label for="">Company size:</label>
-        <select name="" id="" style="margin-left: 73px;margin-bottom: 5px;">
-            <option value="" selected>Small business </option>
-            <option value="">Medium business</option>
-            <option value="">Large business</option>
+        
+        <label for="Company size">Company size:</label>
+        <select name="Company size" id="Company size" style="margin-left: 73px;margin-bottom: 5px;">
+            <option value="Small business" selected>Small business </option>
+            <option value="Medium business">Medium business</option>
+            <option value="Large business">Large business</option>
         </select><br>
-        <label for="">Company industry:</label>
-        <input type="text" style="margin-left: 45.5px;margin-bottom: 5px;" name=""><br>
-        <label for="">Reason :</label>
-        <textarea name="" id="" style="margin-left: 113px; margin-bottom: 5px;"></textarea> <br>
-        <label for="">Leadership experience :</label>
-        <textarea name="" id="" style="margin-left: 16px; margin-bottom: 5px;"></textarea> <br>
-        <label for="">Goals when joining :</label>
-        <textarea name="" id="" style="margin-left: 35.5px; margin-bottom: 5px;"></textarea> <br>
-        <label for="gender">Event desired to join:</label>
-        <input type="radio" style="margin-left: 31px; margin-bottom: 5px;" name="gender">
-        <label for="gender">Networking</label>
-        <input type="radio" style="margin-left: 30px; margin-bottom: 5px;" name="gender">
-        <label for="gender">Workshops</label>
-        <input type="radio" style="margin-left: 30px; margin-bottom: 5px;" name="gender">
-        <label for="gender">Seminar</label><br>
-        <label for="gender">Subscribe to the newslette:</label>
-        <input type="radio" style="margin-left: 0px; margin-bottom: 5px;" name="gender">
-        <label for="gender">Yes</label><br>
+        
+        <label for="Company industry">Company industry:</label>
+        <input type="text" style="margin-left: 45.5px;margin-bottom: 5px;" name="Company industry" id="Company industry"><br>
+        
+        <label for="Reason">Reason :</label>
+        <textarea name="Reason" id="Reason" style="margin-left: 113px; margin-bottom: 5px;"></textarea> <br>
+        <label for="Leadership experience">Leadership experience :</label>
+        <textarea name="Leadership experience" id="Leadership experience" style="margin-left: 16px; margin-bottom: 5px;"></textarea> <br>
+        <label for="Goals when joining">Goals when joining :</label>
+        <textarea name="Goals when joining" id="Goals when joining" style="margin-left: 35.5px; margin-bottom: 5px;"></textarea> <br>
+        
+        <label for="Event desired to join">Event desired to join:</label>
+        <input type="checkbox" style="margin-left: 31px; margin-bottom: 5px;" name="Event desired to join" id="Event desired to join" value="Networking">
+        <label for="Event desired to join">Networking</label>
+        <input type="checkbox" style="margin-left: 30px; margin-bottom: 5px;" name="Event desired to join" id="Event desired to join" value="Workshops">
+        <label for="Event desired to join">Workshops</label>
+        <input type="checkbox" style="margin-left: 30px; margin-bottom: 5px;" name="Event desired to join" id="Event desired to join" value="Seminar">
+        <label for="Event desired to join">Seminar</label><br>
+        
+        <label for="Subscribe to the newslette">Subscribe to the newslette:</label>
+        <input type="checkbox" style="margin-left: 0px; margin-bottom: 5px;" name="Subscribe to the newslette" value="Yes">
+        <label for="Subscribe to the newslette">Yes</label><br>
         <button>Register for membership</button>
-
-
     </form>
-</body>~~
-
-</html>
+</body>
