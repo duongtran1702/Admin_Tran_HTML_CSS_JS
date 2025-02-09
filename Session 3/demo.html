@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+< lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <h1>Regester</h1>
+        <form action="http://www.myserver.com" method="post">
+            <label for="username">Username</label>
+            <input id="username" type="text" name="username" style="margin-bottom: 10px;" /><br />
+            <label for="Password">Password</label>
+            <input id="Password" type="password" name="Password" style="margin-bottom: 10px;" /><br />
+            <label for="Email">Email</label>
+            <input placeholder="email@gmail.com" id="Email" type="email" name="Email"
+                style="margin-bottom: 10px;" /><br />
+
+            <label for="telephone">Telephone</label>
+            <input 
+            id="Telephone"
+            type="tel" 
+            name="Telephone" 
+            style="margin-bottom: 10px;" 
+            pattern="[0-9]{10}" 
+            placeholder="0123456789"
+            /><br />
+
+            <label for="url">Website</label>
+            <input 
+            id="url"
+            type="url" 
+            name="url" 
+            style="margin-bottom: 10px;" 
+            /><br />
+
+            <label for="search">Search</label>
+            <input 
+            id="search"
+            type="search" 
+            name="search" 
+            style="margin-bottom: 10px;" 
+            /><br />
+            
+            <label for="age">Age</label>
+            <input 
+            id="age"
+            type="range" 
+            name="age" 
+            style="margin-bottom: 10px;" 
+            min="0"
+            max="50"
+            /><br />
+
+            <label for="Date of birth">Date of birth</label>
+            <input 
+            id="Date of birth"
+            type="date" 
+            name="Date of birth" 
+            style="margin-bottom: 10px;" 
+            /><br />
+            <input type="submit" value="Submit" />
+            <button style="background-color: aqua;">Send</button>
+        </form>
+    </body>

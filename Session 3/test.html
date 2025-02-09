@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkbox chỉ chọn 1 (HTML & CSS)</title>
+    <style>
+        /* Ẩn radio mặc định */
+        input[type="radio"] {
+            display: none;
+        }
+
+        /* Tạo giao diện checkbox */
+        .custom-checkbox {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #000;
+            border-radius: 4px;
+            position: relative;
+            cursor: pointer;
+            vertical-align: middle;
+        }
+
+        /* Dấu tích */
+        .custom-checkbox::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 5px;
+            border-left: 3px solid black;
+            border-bottom: 3px solid black;
+            transform: rotate(-45deg);
+            top: 5px;
+            left: 4px;
+            opacity: 0;
+        }
+
+        /* Hiện dấu tích khi radio được chọn */
+        input[type="radio"]:checked + .custom-checkbox::after {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <label>
+        <input type="radio" name="group1">
+        <span class="custom-checkbox"></span>
+        Lựa chọn 1
+    </label><br>
+
+    <label>
+        <input type="radio" name="group1">
+        <span class="custom-checkbox"></span>
+        Lựa chọn 2
+    </label><br>
+
+    <label>
+        <input type="radio" name="group1">
+        <span class="custom-checkbox"></span>
+        Lựa chọn 3
+    </label><br>
+
+</body>
+</html>
