@@ -1,0 +1,40 @@
+section{
+    background-color: #cfcccc;
+    width: 420px;
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left:10px ;
+    box-sizing: border-box;
+}
+header{
+    font-family: "Roboto", serif;
+    font-weight: 800;
+    font-size: 23px;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+.in-line{
+    margin-top: 10px;
+    display: flex;
+}
+.content{
+    font-family: "Roboto", serif;
+    font-size: 13px;
+    margin-top: 4.3px;
+    margin-left: 8px;
+}
+footer{
+    margin-top: 10px;
+}
+button{
+    padding:5px 15px 5px 15px;
+    height: 28px;
+    border-radius:5px;
+    border: 1px solid #c2bfbf;
+    box-sizing: border-box;
+}
+#left{
+    margin-right: 5px;
+    background-color: red;
+}

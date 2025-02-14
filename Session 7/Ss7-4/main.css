@@ -1,0 +1,44 @@
+header {
+    border-left: 5px solid orange;
+    padding-left: 10px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+main {
+    display: flex;
+    
+}
+
+main img {
+    width: 275px;
+    height: 350px;
+    object-fit: cover;
+    position: relative;
+    
+}
+
+.content-img {
+    width: 275px;
+    height: 100px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 5px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.016), rgba(0, 0, 0,1)100%);
+    font-weight: 400;
+    font-size: 20px;
+    top: 300px;
+    position: absolute;
+    color: #f7f7f7;
+}
+h3{width: 275px;
+    font-size: 14px;
+}
+.foot{
+    border-top: 1px solid rgb(206, 203, 203);
+    padding-top: 10px;
+}
+
+  
