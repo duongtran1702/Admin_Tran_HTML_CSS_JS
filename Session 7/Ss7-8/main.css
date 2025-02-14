@@ -115,10 +115,12 @@ main{
 footer{
     margin-top: 10px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     padding-bottom: 15px;
 }
 
 .quest{
     margin-right: 15px;
+    margin-top: 15px;
 }
