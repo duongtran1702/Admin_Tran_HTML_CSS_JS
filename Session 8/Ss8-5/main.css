@@ -1,0 +1,46 @@
+.title{
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 20px;
+    color: #7d7a7a;
+    font-weight: 700;
+}
+*{
+    font-family: "Roboto", serif;
+}
+header div{
+    text-align: center;
+}
+section{
+    width:550px;
+    color: #a29d9d;
+}
+hr{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 50px;
+}
+main{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+button{
+    height: 30px;
+    color: #7d7a7a;
+    font-weight: 700;
+}
+.button-left{
+    background-color: rgb(0, 162, 255);
+    color: white;
+}
+footer{
+    background-color: #faf7f7;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+i{
+    margin-right: 10px;
+}

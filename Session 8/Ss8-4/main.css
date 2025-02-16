@@ -1,0 +1,65 @@
+.box{
+ 
+  width:80px;
+  height: 80px;
+  background-color: rgb(255, 255, 255);
+  transform: rotate(45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #b1abab;
+
+}
+.gem{
+  font-size: 30px;
+  color: red;
+  transform: rotate(-45deg);
+}
+*{
+  font-family: "Roboto", serif;
+  
+}
+section{
+  width: 420px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-left: 20px;
+}
+.content{
+  margin-left: 20px;
+  width: 280px;
+  font-size: 16px;
+  color: #b7b2b2;
+}
+.title{
+  margin-left: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.container{
+  display: flex;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+.plane{
+  font-size: 30px;
+  color: red;
+  transform: rotate(-45deg);
+}
+.fa-rocket{
+  font-size: 30px;
+  color: red;
+  transform: rotate(-45deg);
+}
+.fa-chart-simple{
+  font-size: 30px;
+  color: red;
+  transform: rotate(-45deg);
+}
+hr{
+  width: 100px;
+  margin-left: 0px;
+  border-color: rgb(240, 126, 126);
+}
