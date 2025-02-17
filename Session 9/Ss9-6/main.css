@@ -1,0 +1,39 @@
+.container-big{
+    width: 300px;
+    height: 90px;
+    background-color: rgb(100, 77, 48);
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+    box-sizing: border-box;
+}
+.Small{
+    width: 100px;
+    height: 40px;
+    background-color: rgb(107, 97, 86);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.container-small{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.small-line{
+    display: flex;
+    gap: 10px;
+}
+.container{
+    display: flex;
+    gap: 10px;
+}
+*{
+    border-radius: 5px;
+}
+section{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

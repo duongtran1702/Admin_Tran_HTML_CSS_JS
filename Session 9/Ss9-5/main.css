@@ -1,0 +1,33 @@
+div{
+    height: 30px;
+    width: 70px;
+    background-color: #800080;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0px;
+    border-radius: 5px;
+}
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+main{
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+section{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 490px;
+    box-sizing: border-box;
+    color: white;
+    gap: 10px;
+    background-color: rgb(232, 224, 213);
+}

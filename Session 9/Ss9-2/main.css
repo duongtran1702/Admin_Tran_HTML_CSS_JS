@@ -1,0 +1,29 @@
+div{
+    height: 30px;
+    width: 80px;
+    background-color: rgb(43, 213, 43);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+main{
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+section{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #b4b2b2;
+    width: 340px;
+    box-sizing: border-box;
+}

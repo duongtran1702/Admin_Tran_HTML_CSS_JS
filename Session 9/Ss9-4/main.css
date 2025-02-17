@@ -1,0 +1,41 @@
+.container{
+    display: grid;
+    grid-template-areas: "top top" "left right" "bot bot";
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 50px  1fr 50px;
+    gap: 10px;
+    width: 1000px;
+    height: 1000px;
+}
+.top{
+    grid-area: top;
+    background-color:#3292D2;
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+.left{
+    grid-area: left;
+    background-color: #2ECC71;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.right{
+    grid-area: right;
+    background-color: #E74C3C;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.bot{
+    grid-area: bot;
+    background-color: #9B59B6;
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}

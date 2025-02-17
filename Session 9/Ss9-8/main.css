@@ -1,0 +1,112 @@
+header{
+    font-size: 24.3px;
+    width: 170px;
+    height: 30px;
+    background-color:#333333;
+    color: white;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+nav{
+    width: 170px;
+    height: 30px;
+    background-color:#333333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+nav div{
+    font-size: 12px;
+}
+.title{
+    display: flex;
+    width: 850px;
+    background-color:#333333;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.top{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+    padding: 25px;
+    width: 850px;
+    box-sizing: border-box;
+}
+h3{
+    margin:0px;
+}
+.square{
+    width: 80px;
+    height: 80px;
+    background-color:green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    padding: 3px 0px;
+}
+.box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.project{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.mid{
+    background-color: rgb(215, 218, 209);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0px;
+    width: 850px;
+    box-sizing: border-box;
+}
+.bot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: antiquewhite;
+    width: 850px;
+    box-sizing: border-box;
+    padding: 20px 0px;
+}
+p{
+    margin-top: 10px;
+}
+footer{
+    width: 850px;
+    height: 50px;
+    background-color:#333333;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button{
+    background-color: #333333;
+    color: white;
+    padding: 3px 5px;
+    border-radius: 3px;
+}
