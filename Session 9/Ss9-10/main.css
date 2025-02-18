@@ -101,17 +101,26 @@
     justify-content: center;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
 .content-3{
     color: #807272;
     font-size: 14px;
 }
+input[type="text"]{
+    display: block;
+    width: 300px;
+    border: 0px;
+    background-color:#F3F1EF;
+}
+input:focus{
+    outline: none;
+}
 .right-main{
     justify-content: center;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
 button{
     color: white;
@@ -128,9 +137,9 @@ main{
     width: 500px;
     display: flex;
     justify-content: space-between;
-    height: 24px;
+    height: 26px;
     border-bottom: 1px solid #d1c1c1;
-    padding: 2px 5px;
+    padding: 2px 10px;
     box-sizing: border-box;
 }
 .refresh{

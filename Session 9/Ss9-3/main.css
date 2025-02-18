@@ -1,11 +1,11 @@
-div{
+header div{
     height: 30px;
-    width:100px;
+    width:calc(25%-10px);
     background-color: rgb(43, 213, 43);
     display: flex;
     justify-content: center;
     align-items: center;
-     
+     flex: 1;
 }
 header{
     display: flex;
@@ -25,10 +25,18 @@ section{
     display: flex;
     flex-direction: column;
     border: 1px solid #b4b2b2;
-    width: 460px;
+    width:460px;
     
 }
 .special{
     flex-grow: 2;
 }
-
+main div{
+    height: 30px;
+    width:100px;
+    background-color: rgb(43, 213, 43);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}

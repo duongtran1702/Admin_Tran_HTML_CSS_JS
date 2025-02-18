@@ -1,0 +1,30 @@
+.left{
+    font-family: "Dancing Script", serif;
+    font-size: 40px;
+}
+.mid{
+    
+    display: flex;
+    gap: 10px;
+}
+a{
+    display: block;
+    text-decoration: none;
+    display: flex;
+    gap: 5px;
+}
+section{
+    padding: 0 20px;
+    width: 900px;
+    height: 80px;
+    background-color: rgb(227, 227, 185);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mid div{
+    color: #989797;
+}
+.mid .special{
+    color: rgb(29, 25, 25);
+}
