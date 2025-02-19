@@ -1,0 +1,46 @@
+header{
+    background-color: rgb(220, 28, 28);
+    height: 40px;
+    display: flex;
+    height: 50px;
+}
+aside:nth-of-type(1){
+    background-color: green;
+    height: 300px;
+    width: calc(20%-10px);
+}
+main{
+    background-color:yellow ;
+    height: 300px;
+    flex-grow: 1;
+}
+aside:nth-of-type(2){
+    background-color: pink;
+    height: 300px;
+    width: calc(20%-10px);
+}
+footer{
+    background-color: blue;
+    height: 40px;
+    display: flex;
+    height: 50px;
+}
+*{
+    border-radius: 5px;
+}
+section{
+    display: flex;
+    gap: 10px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+@media screen and (max-width:1024px){
+    section{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
