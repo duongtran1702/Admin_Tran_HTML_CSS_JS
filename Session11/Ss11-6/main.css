@@ -110,3 +110,6 @@ section{
     display: flex;
     flex-direction: column;
 }
+*{
+    line-height: 300px !important;
+}
