@@ -1,0 +1,6 @@
+document.write("#admin")
+document.write("1admin")
+document.write("admin-name")
+document.write("admin")
+document.write("_admin")
+document.write("$admin")
