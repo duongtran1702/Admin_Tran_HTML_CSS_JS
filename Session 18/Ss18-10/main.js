@@ -2,9 +2,7 @@ let num = parseInt(prompt("Nhập vào một số (0-999)"));
 let a = Math.floor(num / 100);
 let b = Math.floor((num % 100) / 10);
 let c = num % 10;
-
 let words = "";
-
 if (a > 0) {
     let hundreds = [
         "",
@@ -20,7 +18,6 @@ if (a > 0) {
     ];
     words += hundreds[a] + " ";
 }
-
 if (b > 1) {
     let tens = [
         "",
