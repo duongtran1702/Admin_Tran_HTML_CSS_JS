@@ -1,7 +1,7 @@
 {
     "background.fullscreen": {
     // Local images can be dragged into the browser to quickly get the file protocol address from the address bar
-    "images": ["https://www.zleague.gg/theportal/wp-content/uploads/2023/07/Genshin_Impact_Cover3.jpg", "file:///path/to/local/file"],
+    "images": ["https://cdn.theanimegallery.com/theanimegallery/7177795c-8723-441b-9a0e-710af6e58ff0-cute-anime-wallpaper.webp", "file:///path/to/local/file"],
     "opacity": 0.05,
     "size": "cover",
     "position": "center",
