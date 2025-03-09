@@ -1,14 +1,15 @@
 {
-    "background.fullscreen": {
+  "background.fullscreen": {
     // Local images can be dragged into the browser to quickly get the file protocol address from the address bar
-    "images": ["https://cdn.theanimegallery.com/theanimegallery/7177795c-8723-441b-9a0e-710af6e58ff0-cute-anime-wallpaper.webp", "file:///path/to/local/file"],
+    "images": [
+      "file:///D:/Beginer/.vscode/anime/anime.gif"
+    ],
     "opacity": 0.055,
     "size": "cover",
     "position": "center",
     "interval": 0,
     "random": false
   },
-  // `sidebar` and `panel` have the same config as `fullscreen`
   "background.sidebar": {},
   "background.panel": {}
 }
