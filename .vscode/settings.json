@@ -1,15 +1,16 @@
 {
-  "background.fullscreen": {
-    // Local images can be dragged into the browser to quickly get the file protocol address from the address bar
-    "images": [
-      "file:///D:/Beginer/.vscode/anime/anime.gif"
-    ],
-    "opacity": 0.055,
-    "size": "cover",
-    "position": "center",
-    "interval": 0,
-    "random": false
-  },
-  "background.sidebar": {},
-  "background.panel": {}
+    "background.fullscreen": {
+        // Local images can be dragged into the browser to quickly get the file protocol address from the address bar
+        "images": ["file:///D:/Beginer/.vscode/anime/anime.gif"],
+        "opacity": 0.1,
+        "size": "cover",
+        "position": "center",
+        "interval": 0,
+        "random": false
+    },
+    "background.sidebar": {},
+    "background.panel": {},
+    "editor.codeActionsOnSave": {
+      
+    }
 }
