@@ -117,7 +117,6 @@ do {
     else if (option === 7) {
         alert("Đã thoát chương trình.");
     }
-
     else {
         alert("Lựa chọn không hợp lệ!");
     }

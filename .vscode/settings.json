@@ -1,7 +1,7 @@
 {
     "background.fullscreen": {
         // Local images can be dragged into the browser to quickly get the file protocol address from the address bar
-        "images": ["file:///D:/Beginer/.vscode/anime/anime.gif"],
+        "images": ["file:///D:/Beginer/.vscode/anime/anime.jpg"],
         "opacity": 0.1,
         "size": "cover",
         "position": "center",
