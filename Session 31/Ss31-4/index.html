@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style></style>
+    </head>
+    <body>
+        <section
+            style="width: 500px; padding: 10px 5px 20px 5px; height: 130px"
+        >
+            <div
+                style="font-size: 22px; font-weight: bold; padding-bottom: 10px"
+            >
+                Modal Example
+            </div>
+            <button id="open">Open Modal</button>
+            <div
+                id="box"
+                style="
+                    width: 75%;
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    padding-left: 10px;
+                    box-sizing: border-box;
+                    display: none;
+                    position: relative;
+                    bottom: -15px;
+                    right: 10%;
+                    left: 10%;
+                "
+            >
+                <div id="content">Some text in the Modal</div>
+                <button
+                    id="close"
+                    style="
+                        border: 0px;
+                        background-color: transparent;
+                        position: absolute;
+                        top: 3px;
+                        right: 3px;
+                    "
+                >
+                    x
+                </button>
+            </div>
+        </section>
+        <script>
+            let open = document.getElementById('open');
+            let section = document.querySelector('section');
+            let box = document.getElementById('box');
+            let close = document.getElementById('close');
+            open.onclick = function () {
+                section.style.backgroundColor = 'rgba(0,0,0,0.3)';
+                box.style.backgroundColor = 'white';
+                box.style.display = 'flex';
+            };
+            close.onclick = function () {
+                section.style.backgroundColor = 'white';
+                box.style.display = 'none';
+            };
+        </script>
+    </body>
+</html>

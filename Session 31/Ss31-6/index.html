@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            input {
+                height: 20px;
+                border-radius: 3px;
+                border: 0px;
+                padding-left: 10px;
+            }
+            button {
+                border-radius: 3px;
+                border: 0px;
+                width: 60px;
+                height: 25px;
+            }
+            button:hover{
+                transform: scale(1.1);
+                transition: background-color 0.3s ease;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div
+            class="container"
+            style="
+                display: flex;
+                flex-direction: column;
+                width: 200px;
+                gap: 10px;
+                padding: 10px;
+                background-color: #cbcaca;
+            "
+        >
+            <label for="username">Username :</label>
+            <input type="email" id="username" />
+            <label for="password">Password :</label>
+            <input type="password" id="password" />
+            <button onclick="login()">Login</button>
+        </div>
+        <script>
+            const fixedUsername = 'huanrose@gmail.com';
+            const fixedPassword = '123456';
+            let btn = document.querySelector('button');
+            function login() {
+                const inputUserName = document.getElementById('username').value;
+                const inputUserPassword =
+                    document.getElementById('password').value;
+                if (
+                    fixedPassword === inputUserPassword &&
+                    fixedUsername === inputUserName
+                ) {
+                    console.log('Đăng nhập thành công!');
+                } else {
+                    console.log('Đăng không nhập thành công!');
+                }
+            }
+        </script>
+    </body>
+</html>

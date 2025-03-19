@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <p style="font-size: 40px; font-weight: 600">Danh sách nhân viên</p>
+        <table id="listEmployee" border="1" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>NAME</th>
+                    <th>AGE</th>
+                    <th>ADDRESS</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <script>
+            const employees = [
+                {
+                    id: 1,
+                    name: 'Admin',
+                    age: 18,
+                    address: 'New York',
+                },
+                {
+                    id: 2,
+                    name: 'Lovemon',
+                    age: 18,
+                    address: 'New York',
+                },
+                {
+                    id: 3,
+                    name: 'Mynato',
+                    age: 18,
+                    address: 'New York',
+                },
+            ];
+            const tb = document.querySelector('#listEmployee tbody');
+            employees.forEach((temp) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                 <td>${temp.id}</td>
+                 <td>${temp.name}</td>
+                 <td>${temp.age}</td>
+                 <td>${temp.address}</td>
+                `;
+                tb.appendChild(row);
+            });
+        </script>
+    </body>
+</html>

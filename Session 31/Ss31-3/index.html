@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .box div {
+                width: 50px;
+                height: 50px;
+                border: 2px solid black ;
+                border-radius: 5px;
+            }
+            .box-purple {
+                background-color: purple;
+            }
+            .box-blue {
+                background-color: blue;
+            }
+            .box-red {
+                background-color: red;
+            }
+            .box-green {
+                background-color: green;
+            }
+            .box-yellow {
+                background-color: yellow;
+            }
+            .container {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                width: 600px;
+                padding: 20px;
+            }
+            .box{
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Click vào ô vuông để đổi màu nền</h1>
+            <div class="box">
+                <div class="box-purple" onclick="changeColor('purple')"></div>
+                <div class="box-blue" onclick="changeColor('blue')"></div>
+                <div class="box-red" onclick="changeColor('red')"></div>
+                <div class="box-green" onclick="changeColor('green')"></div>
+                <div class="box-yellow" onclick="changeColor('yellow')"></div>
+            </div>
+        </div>
+        <script>
+            let container = document.getElementsByClassName('container')[0];
+            function changeColor(color) {
+                container.style.backgroundColor = color;
+            }
+        </script>
+    </body>
+</html>
