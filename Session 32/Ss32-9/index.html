@@ -50,7 +50,7 @@
             }
         </style>
     </head>
-    <body>
+    <body style="background-color: rgba(0, 0, 0, 0)">
         <section id="progress-container">
             <div id="progress">0%</div>
             <div id="progress-bar"></div>
@@ -60,6 +60,7 @@
             <button onclick="changeProgress(-10)">Giảm tiến trình</button>
         </div>
         <script>
+            let bg = document.body;
             let progress = 0;
             let progress_bar = document.getElementById('progress-bar');
             let text = document.getElementById('progress');
@@ -69,6 +70,8 @@
                 if (progress < 0) progress = 0;
                 progress_bar.style.width = progress + '%';
                 text.innerText = progress + '%';
+                let bgChange = progress / 100;
+                bg.style.backgroundColor = `rgba(0,0,0,${bgChange})`;
             }
         </script>
     </body>
