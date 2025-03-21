@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            button {
+                width: 50px;
+                height: 35px;
+                border: 0px;
+                border-radius: 5px;
+            }
+            button:hover {
+                transform: scale(1.1);
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body >
+        <section style="display: flex;
+        flex-direction: column; gap:40px;align-items: center;">
+            <div id="content" style="font-size: 30px;">Hello World</div>
+            <div style="display: flex; gap: 10px">
+                <button
+                    style="background-color: #4caf50; color: white"
+                    onclick="btnIn()"
+                >
+                    +
+                </button>
+                <button
+                    style="background-color: #f44336; color: white"
+                    onclick="btnDe()"
+                >
+                    -
+                </button>
+            </div>
+        </section>
+        <script>
+            let size = 30;
+            function btnIn() {
+                size+=3;
+                render();
+            }
+            function btnDe() {
+                size-=3;
+                render();
+            }
+            function render() {
+                let content = document.getElementById('content');
+                content.innerText = 'Hello World';
+                content.style.fontSize = size + 'px';
+            }
+        </script>
+    </body>
+</html>

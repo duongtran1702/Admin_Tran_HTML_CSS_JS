@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <input type="text" id="email" />
+        <div
+            id="notification-1"
+            style="color: rgba(0, 128, 0, 0.789); display: none"
+        >
+            email hợp lệ !
+        </div>
+        <div id="notification-2" style="color: rgb(211, 29, 9); display: none">
+            email không hợp lệ !
+        </div>
+        <button id="check">check</button>
+        <script>
+            function isValidEmail(email) {
+                return (
+                    email.includes('@') &&
+                    (email.endsWith('.com') || email.endsWith('.vn'))
+                );
+            }
+            console.log(email);
+            let check = document.getElementById('check');
+            check.onclick = () => {
+                let email = document.getElementById('email').value;
+                if (isValidEmail(email)) {
+                    document.getElementById('notification-1').style.display =
+                        'flex';
+                } else {
+                    document.getElementById('notification-2').style.display =
+                        'flex';
+                }
+            };
+        </script>
+    </body>
+</html>

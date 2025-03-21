@@ -31,34 +31,39 @@ class Manage {
             if (temp.completed === true) {
                 quest.classList.add('checked');
             }
-    
+
             // Toggle trạng thái khi click vào công việc
             quest.onclick = () => {
                 quest.classList.toggle('checked');
                 temp.toggle(); // Cập nhật trạng thái trong đối tượng
             };
-    
+
             // Tạo nút close
             let close = document.createElement('div');
             close.classList.add('close');
             close.innerText = 'x';
-    
+
             // Gán sự kiện xóa
             close.onclick = (e) => {
                 e.stopPropagation(); // Không bị ảnh hưởng bởi quest.onclick
-                this.todoList.splice(index, 1);
-                this.show();
+                let confirm = window.confirm('Xác nhận xóa');
+                console.log('check', confirm);
+
+                if (confirm == true) {
+                    this.todoList.splice(index, 1);
+                    this.show();
+                }
             };
-    
+
             quest.appendChild(close);
             ul.appendChild(quest);
         });
     }
-    
 
     add(task, completed) {
         this.id += 1;
-        this.todoList.push(new Quest(this.id, task, completed));
+        if (task.trim() !== '')
+            this.todoList.push(new Quest(this.id, task, completed));
     }
 }
 const manager = new Manage();
@@ -69,4 +74,5 @@ btn.onclick = function () {
     let completed = false;
     manager.add(task, completed);
     manager.show();
+    document.getElementById('myInput').value = '';
 };

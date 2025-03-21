@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            *{
+                border: 0px;
+                border-radius: 5px;
+            }
+            .img-sm {
+                object-fit: cover;
+                width: 180px;
+                height: 240px;
+            }
+            img:hover {
+                cursor: pointer;
+                transform: scale(1.05);
+            }
+            .gallery {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                justify-content: center;
+                align-items: center;
+            }
+            #overlay {
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                background-color: #818080;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                display: none;
+                z-index: 1000;
+            }
+            .img-big{
+                object-fit: cover;
+                width: 300px;
+                height: 420px;
+            }
+        </style>
+    </head>
+    <body>
+        <section style="background-color: transparent">
+            <div class="gallery">
+                <img
+                    src="https://i.pinimg.com/474x/5f/41/7d/5f417dce9a6c73f6070009ccf1030605.jpg"
+                    alt=""
+                    class="img-sm"
+                />
+                <img
+                    src="https://i.pinimg.com/474x/c6/2d/3e/c62d3ee76340a9b79a3b48aadb9652b3.jpg"
+                    alt=""
+                    class="img-sm"
+                />
+                <img
+                    src="https://i.pinimg.com/474x/d5/15/78/d51578c8d19faa18b9e8d4e81e6fbbf8.jpg"
+                    alt=""
+                    class="img-sm"
+                />
+            </div>
+            <div id="overlay">
+                <div class="gallery">
+                    <img src="" alt="" class="img-big" />
+                </div>
+            </div>
+        </section>
+        <script>
+            let gallery = document.getElementsByClassName('gallery')[0];
+            const thumbnails = document.querySelectorAll('.img-sm');
+            const overlay = document.getElementById('overlay');
+            const bigImg = document.querySelector('.img-big');
+
+            thumbnails.forEach((img) => {
+                img.addEventListener('click', () => {
+                    bigImg.src = img.src;
+                    overlay.style.display = 'flex';
+                    gallery.style.display = 'none';
+                });
+            });
+            overlay.addEventListener('click', (e) => {
+                if (e.target !== bigImg) {
+                    overlay.style.display = 'none';
+                    gallery.style.display = 'flex';
+                }
+            });
+        </script>
+    </body>
+</html>
