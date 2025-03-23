@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .input{
+                display: flex;
+                gap: 10px;
+                justify-content: center;
+                align-items: center;
+            }
+            img {
+                display: block;
+                width: 100px;
+                height: 50px;
+            }
+            .product {
+                width: 150px;
+                box-shadow: 0 0 3px rgb(136, 136, 136);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 5px;
+                box-sizing: border-box;
+                border-radius: 2px;
+                height: 200px;
+                margin: 10px;
+                gap: 3px;
+            }
+            .content {
+                color: #706868;
+                font-size: 14px;
+            }
+            .price {
+                color: #706868;
+            }
+            button {
+                background-color: #0d6efd;
+                color: white;
+                border: none;
+                border-radius: 3px;
+                width: 40px;
+                height: 25px;
+            }
+            #gallery {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            input {
+                outline: none;
+                box-shadow: 0 0 3px rgb(113, 113, 113);
+                border-radius: 3px;
+                border: none;
+                width: 60%;
+                height: 20px;
+                padding-left: 10px;
+            }
+            input:focus {
+                border-color: #0d6efd;
+                box-shadow: 0 0 4px #0347ad;
+            }
+            #search {
+                background-color: rgb(19, 196, 19);
+                color: white;
+                width: 55px;
+            }
+            button:hover {
+                cursor: pointer;
+                transform: scale(1.05);
+            }
+        </style>
+    </head>
+    <body>
+        <section class="input">
+            <input type="text" placeholder="Search..." />
+            <button id="search" onclick="search()">Search</button>
+        </section>
+
+        <section id="gallery"></section>
+
+        <script>
+            class Product {
+                constructor(id, name, price, image, description) {
+                    this.id = id;
+                    this.name = name;
+                    this.price = price;
+                    this.image = image;
+                    this.description = description;
+                }
+            }
+
+            class Shop {
+                constructor() {
+                    this.shop = [
+                        new Product(
+                            1,
+                            'Laptop Dell XPS 15',
+                            35990000,
+                            'https://zshop.vn/images/detailed/77/91WgL3IbNIL_emm5-1v._AC_SL1500_.jpg',
+                            'Laptop cao cấp với màn hình 15 inch, CPU Intel Core i7 và RAM 16GB.'
+                        ),
+                        new Product(
+                            2,
+                            'iPhone 15 Pro Max',
+                            32990000,
+                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQguYNKURQNlMDl5Om0aJ1nShZv76gSTj21_g&s',
+                            'Điện thoại flagship của Apple với camera 48MP và chip A17 Pro.'
+                        ),
+                        new Product(
+                            3,
+                            'Samsung Galaxy S24 Ultra',
+                            28990000,
+                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyf17N9FnDLQC11tjtuE-PRAJ9rhFG4Cu3-A&s',
+                            'Điện thoại Android mạnh mẽ với bút S-Pen và camera siêu zoom.'
+                        ),
+                        new Product(
+                            4,
+                            'Tai nghe Sony WH-1000XM5',
+                            7990000,
+                            'https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-ljv36f0uj8xuaf',
+                            'Tai nghe chống ồn tốt nhất với thời lượng pin lên đến 30 giờ.'
+                        ),
+                        new Product(
+                            5,
+                            'Apple Watch Series 9',
+                            11990000,
+                            'https://www.apple.com/newsroom/images/2023/09/apple-introduces-the-advanced-new-apple-watch-series-9/tile/Apple-Watch-S9-hero-230912.jpg.og.jpg?202503102216',
+                            'Đồng hồ thông minh cao cấp với tính năng đo nhịp tim và hỗ trợ thể thao.'
+                        ),
+                        new Product(
+                            6,
+                            'Loa JBL Charge 5',
+                            3990000,
+                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEd8O129ihUJ03WBIw2pTzuAWDcm2w3uO17w&s',
+                            'Loa Bluetooth chống nước với âm bass mạnh mẽ và pin 20 giờ.'
+                        ),
+                    ];
+                }
+
+                render(array) {
+                    let gallery = document.getElementById('gallery');
+                    gallery.innerHTML = '';
+                    array.forEach((product) => {
+                        let productDiv = document.createElement('div');
+                        productDiv.classList.add('product');
+
+                        let image = document.createElement('img');
+                        image.src = product.image;
+
+                        let name = document.createElement('div');
+                        name.classList.add('name');
+                        name.textContent = product.name;
+
+                        let content = document.createElement('div');
+                        content.classList.add('content');
+                        content.textContent = product.description;
+
+                        let price = document.createElement('div');
+                        price.classList.add('price');
+                        price.textContent =
+                            product.price.toLocaleString() + ' VND';
+
+                        let button = document.createElement('button');
+                        button.textContent = 'Buy';
+
+                        productDiv.appendChild(image);
+                        productDiv.appendChild(name);
+                        productDiv.appendChild(content);
+                        productDiv.appendChild(price);
+                        productDiv.appendChild(button);
+
+                        gallery.appendChild(productDiv);
+                    });
+                }
+            }
+
+            const shop = new Shop();
+            shop.render(shop.shop);
+            function search() {
+                let searchValue = document
+                    .querySelector('input')
+                    .value.toLowerCase();
+                if (searchValue === '') {
+                    shop.render(shop.shop);
+                } else {
+                    const shopTemp = shop.shop.filter((name) =>
+                        name.name.toLowerCase().includes(searchValue)
+                    );
+                    shop.render(shopTemp);
+                }
+                searchValue = document.querySelector('input').value = '';
+            }
+        </script>
+    </body>
+</html>

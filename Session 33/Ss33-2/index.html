@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            button {
+                width: 70px;
+                height: 25px;
+                border-radius: 3px;
+            }
+            textarea {
+                width: 150px;
+            }
+        </style>
+    </head>
+    <body>
+        <textarea name="" id="input"></textarea>
+        <div id="content">0 kí tự</div>
+        <button id="check">Check</button>
+
+        <script>
+            let content = document.getElementById('content');
+            let input;
+            let check = document.getElementById('check');
+            
+            check.onclick = function () {
+                input = document.querySelector('textarea').value;
+                length = input.length;
+                render(input.length);
+            };
+            function render(length) {
+                content.innerText = `${length} kí tự`;
+            }
+        </script>
+    </body>
+</html>

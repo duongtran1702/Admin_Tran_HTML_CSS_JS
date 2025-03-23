@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            ul {
+                margin: 0px;
+                padding: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <select id="categorySelect">
+                <option value="" selected>--Lựa chọn danh mục--</option>
+                <option value="Đồ ăn">Đồ ăn</option>
+                <option value="Nước">Nước</option>
+                <option value="Dụng cụ">Dụng cụ</option>
+            </select>
+            <button onclick="filterProduct()">Lọc</button>
+        </section>
+        <ul id="myList"></ul>
+        <script>
+            class Product {
+                constructor(name, category) {
+                    this.name = name;
+                    this.category = category;
+                }
+            }
+            class Manage {
+                constructor() {
+                    this.list = [
+                        new Product('Rau sạch', 'Đồ ăn'),
+                        new Product('Thịt lợn', 'Đồ ăn'),
+                        new Product('Pepsi không calo', 'Nước'),
+                        new Product('Cocacola', 'Nước'),
+                        new Product('Cờ lê', 'Dụng cụ'),
+                        new Product('Tuy vít', 'Dụng cụ'),
+                    ];
+                }
+                render(array) {
+                    const myList = document.getElementById('myList');
+                    myList.innerHTML = '';
+                    array.forEach((product) => {
+                        let li = document.createElement('li');
+                        li.innerHTML = `Tên sản phẩm : ${product.name} - Danh mục : ${product.category}`;
+                        myList.appendChild(li);
+                    });
+                }
+            }
+            const manage = new Manage();
+            let select = document.getElementById('categorySelect');
+            manage.render(manage.list);
+
+            function filterProduct() {
+                let selectedValue = select.value;
+                if (selectedValue === '') {
+                    manage.render(manage.list);
+                } else {
+                    const tempList = manage.list.filter(
+                        (category) => category.category === selectedValue
+                    );
+                    manage.render(tempList);
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script
+            src="https://kit.fontawesome.com/e724c329aa.js"
+            crossorigin="anonymous"
+        ></script>
+        <!-- <i class="fa-solid fa-sun"></i> -->
+        <!-- <i class="fa-solid fa-cloud-rain"></i> -->
+        <style>
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+            body {
+                padding: 20px;
+                background-color: rgb(198, 207, 255);
+            }
+            .city {
+                font-weight: 600;
+                font-size: 32px;
+            }
+            .weather-icon {
+                font-size: 60px;
+                color: white;
+            }
+            .weather-container {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+            .temperature {
+                font-size: 50px;
+            }
+            li {
+                font-size: 20px;
+            }
+            .weather-details {
+                width: 400px;
+                background-color: #d2e9ff;
+                padding: 10px 5px 20px 10px;
+                border-radius: 8px;
+            }
+            #gallery {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                justify-content: center;
+            }
+            header {
+                text-align: center;
+                font-size: 35px;
+                font-weight: bold;
+                color: rgb(197, 113, 24);
+            }
+            #input {
+                padding: 20px;
+                display: flex;
+                justify-content: center;
+            }
+            input {
+                outline: none;
+                border: none;
+                height: 25px;
+                width: 30%;
+                padding-left: 10px;
+                border-top-left-radius: 3px;
+                border-bottom-left-radius: 3px;
+            }
+            button {
+                background-color: #0a6acb;
+                color: white;
+                border: none;
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+            }
+            button:hover {
+                cursor: pointer;
+                transform: scale(1.03);
+            }
+            #notifications {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                font-size: 30px;
+                margin: 10px 10%;
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <header>Ứng dụng Thời tiết</header>
+        <section id="input">
+            <input type="text" placeholder="Search city ... " />
+            <button onclick="search()">Search</button>
+        </section>
+        <div id="notifications">
+            Thành phố không có trong danh sách vui lòng thử thành phố khác
+        </div>
+        <div id="gallery"></div>
+
+        <script>
+            class City {
+                constructor(
+                    city,
+                    icon,
+                    temperature,
+                    weather,
+                    humidity,
+                    windSpeed
+                ) {
+                    this.city = city;
+                    this.icon = icon;
+                    this.temperature = temperature;
+                    this.weather = weather;
+                    this.humidity = humidity;
+                    this.windSpeed = windSpeed;
+                }
+            }
+            class Cities {
+                constructor() {
+                    this.cities = [
+                        new City('Hà Nội', '&#x2601;', 25, 'Có mây', 70, 5),
+                        new City('Hồ Chí Minh', '&#x1F31E;', 32, 'Nắng', 75, 7),
+                        new City('Đà Nẵng', '&#x1F327;', 28, 'Mưa rào', 82, 12),
+                    ];
+                }
+                render(array) {
+                    let gallery = document.getElementById('gallery');
+                    gallery.innerHTML = '';
+                    array.forEach((temp) => {
+                        let weatherDetails = document.createElement('section');
+                        weatherDetails.className = 'weather-details';
+
+                        let city = document.createElement('div');
+                        city.innerText = temp.city;
+                        city.className = 'city';
+
+                        let weatherContainer = document.createElement('div');
+                        weatherContainer.className = 'weather-container';
+
+                        let icon = document.createElement('div');
+                        icon.className = 'weather-icon';
+                        icon.innerHTML = temp.icon;
+
+                        let temperature = document.createElement('div');
+                        temperature.className = 'temperature';
+                        temperature.innerHTML = `${temp.temperature}&deg;C `;
+
+                        let ul = document.createElement('ul');
+                        ul.className = 'weather-information';
+                        ul.innerHTML = `<li>${temp.weather}</li> 
+                        <li>Độ ẩm: ${temp.humidity}%</li> 
+                        <li>Tốc độ gió: ${temp.windSpeed}km/h</li>`;
+
+                        weatherContainer.appendChild(icon);
+                        weatherContainer.appendChild(temperature);
+                        weatherContainer.appendChild(ul);
+
+                        weatherDetails.appendChild(city);
+                        weatherDetails.appendChild(weatherContainer);
+
+                        gallery.appendChild(weatherDetails);
+                    });
+                }
+            }
+            const weatherDetail = new Cities();
+            weatherDetail.render(weatherDetail.cities);
+            let noti = document.getElementById('notifications');
+            function search() {
+                let cityValue = document
+                    .querySelector('input')
+                    .value.trim()
+                    .toLowerCase();
+                let tempArray = weatherDetail.cities.filter(
+                    (temp) => temp.city.toLowerCase() === cityValue
+                );
+                if (cityValue === '') {
+                    weatherDetail.render(weatherDetail.cities);
+                } else if (tempArray.length !== 0) {
+                    weatherDetail.render(tempArray);
+                    noti.style.display = 'none';
+                } else {
+                    weatherDetail.render(tempArray);
+                    noti.style.display = 'flex';
+                }
+                document.querySelector('input').value = '';
+            }
+        </script>
+    </body>
+</html>

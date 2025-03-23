@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script
+            src="https://kit.fontawesome.com/e724c329aa.js"
+            crossorigin="anonymous"
+        ></script>
+        <style>
+            button {
+                border: none;
+                background-color: transparent;
+            }
+            #input {
+                border: 1px solid;
+                width: 300px;
+                display: flex;
+                justify-content: space-between;
+                padding: 8px;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body
+        style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+        "
+    >
+        <section id="input">
+            <input
+                type="password"
+                placeholder="Enter the passowrd"
+                style="outline: none; border: none; font-size: 18px"
+            />
+            <i
+                onclick="displayEye()"
+                class="fa-solid fa-eye-slash"
+                style="opacity: 0.6; font-size: 18px"
+            ></i>
+        </section>
+        <script>
+            let input = document.querySelector('input');
+            let eye = document.querySelector('i');
+            function displayEye() {
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    eye.classList.add('fa-eye');
+                    eye.classList.remove('fa-eye-slash');
+                } else {
+                    input.type = 'password';
+                    eye.classList.remove('fa-eye');
+                    eye.classList.add('fa-eye-slash');
+                }
+            }
+        </script>
+    </body>
+</html>
