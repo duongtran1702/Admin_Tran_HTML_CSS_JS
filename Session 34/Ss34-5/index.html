@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            section {
+                background-color: rgb(226, 252, 243);
+                width: fit-content;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            #title {
+                font-size: 24px;
+                text-align: center;
+                padding: 10px;
+                font-weight: bold;
+            }
+            #zone-input {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
+            button {
+                padding: 5px 10px;
+                background-color: rgb(255, 90, 49);
+                color: white;
+                border: 0px;
+                border-radius: 5px;
+                width: fit-content;
+                margin: auto;
+            }
+            button:hover {
+                cursor: pointer;
+                background-color: red;
+            }
+            td {
+                padding: 10px 5px;
+                text-align: center;
+                font-weight: 400;
+            }
+            thead {
+                background-color: #e4e4e4;
+                color: black;
+            }
+            table,
+            td,
+            th {
+                box-shadow: 0px 0px 0.8px 0px rgb(136, 136, 136);
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <div id="title">Danh sách nhân viên Rikkei</div>
+            <div id="zone-input">
+                <div class="input-name">
+                    <label for="">Tên nhân viên</label>
+                    <input type="text" id="name" />
+                </div>
+                <div class="input-role">
+                    <label for="">Chức vụ</label>
+                    <input type="text" id="role" />
+                </div>
+            </div>
+            <button id="btn">Thêm nhân viên</button>
+            <table cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên nhân viên</th>
+                        <th>Chức vụ</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+        <script>
+            class Employee {
+                constructor(name, role) {
+                    this.name = name;
+                    this.role = role;
+                }
+            }
+            class Manager {
+                constructor() {
+                    this.employees = [
+                        new Employee('Nguyen Van A', 'Developer'),
+                        new Employee('Nguyen Van B', 'Tester'),
+                        new Employee('Nguyen Van C', 'BA'),
+                        new Employee('Nguyen Van D', 'PM'),
+                        new Employee('Nguyen Van E', 'HR'),
+                    ];
+                    this.addEmployee();
+                    this.render();
+                }
+                addEmployee() {
+                    let btn = document.getElementById('btn');
+                    btn.addEventListener('click', () => {
+                        let name = document.getElementById('name').value;
+                        let role = document.getElementById('role').value;
+                        if (name.trim() === '' || role.trim() === '') {
+                            alert('Vui lòng nhập đầy đủ thông tin');
+                            return;
+                        }
+                        let employee = new Employee(name, role);
+                        this.employees.push(employee);
+                        this.render();
+                        document.getElementById('name').value = '';
+                        document.getElementById('role').value = '';
+                    });
+                }
+                render() {
+                    let tbody = document.querySelector('tbody');
+                    tbody.innerHTML = '';
+                    this.employees.forEach((employee, index) => {
+                        let tr = document.createElement('tr');
+                        let td1 = document.createElement('td');
+                        let td2 = document.createElement('td');
+                        let td3 = document.createElement('td');
+                        td1.innerHTML = index + 1;
+                        td2.innerHTML = employee.name;
+                        td3.innerHTML = employee.role;
+                        tr.appendChild(td1);
+                        tr.appendChild(td2);
+                        tr.appendChild(td3);
+                        tbody.appendChild(tr);
+                    });
+                    localStorage.setItem(
+                        'listEmployee',
+                        JSON.stringify(this.employees)
+                    );
+                }
+            }
+            new Manager().render();
+        </script>
+    </body>
+</html>

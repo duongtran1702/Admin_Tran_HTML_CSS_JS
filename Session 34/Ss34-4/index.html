@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body {
+                height: 100vh;
+            }
+            * {
+                border-radius: 3px;
+                border: 0px;
+            }
+            ul {
+                list-style-type: none;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                width: 74%;
+                padding: 0px;
+                margin: 0px;
+            }
+            li {
+                display: flex;
+                justify-content: space-between;
+                color: rgb(27, 27, 27);
+            }
+            .close {
+                background-color: #ff0000;
+                color: white;
+                border: 0px;
+            }
+            .close:hover {
+                transform: scale(1.1);
+                cursor: pointer;
+            }
+            #add:hover {
+                transform: scale(1.1);
+                cursor: pointer;
+            }
+            input {
+                padding-left: 10px;
+            }
+        </style>
+    </head>
+    <body style="display: flex; align-items: center; justify-content: center">
+        <section
+            style="
+                padding: 10px 0px;
+                width: 300px;
+                background-color: #d3d3d3;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+            "
+        >
+            <div style="font-size: 20px">To-Do List K24_PTIT</div>
+            <div class="box">
+                <div style="display: flex; gap: 5px">
+                    <input type="text" placeholder="Nhập nhiệm vụ" />
+                    <button
+                        style="background-color: #28a745; color: white"
+                        onclick="addContent()"
+                        id="add"
+                    >
+                        Thêm
+                    </button>
+                </div>
+            </div>
+            <ul id="list"></ul>
+        </section>
+        <script>
+            class ToDo {
+                constructor(id, content) {
+                    this.content = content;
+                    this.id = id;
+                }
+            }
+            class Manage {
+                constructor() {
+                    this.listToDo = [
+                        new ToDo(1, 'hoc dom js'),
+                        new ToDo(2, 'lam bai tap dom js'),
+                        new ToDo(3, 'CSS + HTML '),
+                    ];
+                }
+                add(content) {
+                    let id = this.listToDo[this.listToDo.length - 1].id + 1;
+                    if (content.trim() !== '') {
+                        this.listToDo.push(new ToDo(id, content));
+                    }
+                }
+                render() {
+                    let listQUest = document.getElementById('list');
+                    listQUest.innerHTML = '';
+                    this.listToDo.forEach((quest) => {
+                        let li = document.createElement('li');
+                        li.innerHTML = `${quest.content}`;
+                        let button = document.createElement('button');
+                        button.classList.add('close');
+                        button.onclick = () => close(quest.id);
+                        button.innerHTML = `x`;
+                        li.appendChild(button);
+                        listQUest.appendChild(li);
+                    });
+                    localStorage.setItem(
+                        'listToDo',
+                        JSON.stringify(this.listToDo)
+                    );
+                }
+            }
+            let manage = new Manage();
+            function addContent() {
+                let content = document.querySelector('input').value;
+                manage.add(content);
+                document.querySelector('input').value = '';
+                manage.render();
+            }
+            function close(id) {
+                if (window.confirm('Bạn chắc chắn muốn xóa ?')) {
+                    manage.listToDo = manage.listToDo.filter(
+                        (temp) => temp.id !== id
+                    );
+                    manage.render();
+                }
+            }
+            manage.render();
+        </script>
+    </body>
+</html>

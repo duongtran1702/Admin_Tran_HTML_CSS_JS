@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                border-radius: 5px;
+            }
+            .title {
+                text-align: center;
+                font-size: 30px;
+                font-weight: 600;
+            }
+            section {
+                width: 300px;
+                background-color: rgb(249, 223, 221);
+                display: flex;
+                flex-direction: column;
+                padding: 20px;
+                gap: 10px;
+            }
+            input {
+                padding-left: 5px;
+                height: 24px;
+                outline: none;
+                border: 0px;
+                box-shadow: 0 0 2px #aaaaaa;
+            }
+            input:focus {
+                outline: 2px solid rgb(159, 212, 255);
+            }
+            button {
+                margin-top: 10px;
+                border: 0px;
+                background-color: rgb(91, 151, 248);
+                height: 28px;
+                color: white;
+                font-size: 16px;
+            }
+            button:hover {
+                cursor: pointer;
+                background-color: rgb(70, 139, 251);
+            }
+            #notification {
+                color: #fd2323;
+                padding-left: 5px;
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <div class="title">Login</div>
+
+            <label for="">Email:</label>
+            <input type="text" id="email" />
+
+            <label for="">Password:</label>
+            <input type="text" id="password" />
+
+            <div id="notification"></div>
+            <button>Login</button>
+        </section>
+
+        <script>
+            let storeAccount = [];
+            const data = localStorage.getItem('storeAccount');
+            if (data) {
+                storeAccount = JSON.parse(data);
+            }
+            let btn = document.querySelector('button');
+            btn.addEventListener('click', () => {
+                let email = document.getElementById('email').value.trim();
+                let password = document.getElementById('password').value.trim();
+                let noti = document.getElementById('notification');
+
+                noti.style.display = 'none';
+
+                if (!email || !password) {
+                    noti.innerText = 'Email or password do not empty !';
+                    noti.style.display = 'flex';
+                    noti.style.color = '#fd2323';
+                    return;
+                }
+                let found = storeAccount.find((acc) => acc.email === email);
+                if (!found) {
+                    noti.innerText =
+                        'Email or password is not correct . Please try again';
+                    noti.style.display = 'flex';
+                    noti.style.color = '#fd2323';
+                    return;
+                }
+                if (password === found.password) {
+                    noti.innerText = 'Login sucessfully ! Welcome';
+                    noti.style.display = 'flex';
+                    noti.style.color = 'rgb(65, 244, 71)';
+                    window.location.href="hello.html"
+                    return;
+                } else {
+                    noti.innerText =
+                        'Email or password is not correct . Please try again';
+                    noti.style.display = 'flex';
+                    noti.style.color = '#fd2323';
+                    return;
+                }
+            });
+        </script>
+    </body>
+</html>
