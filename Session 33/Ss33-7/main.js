@@ -75,9 +75,24 @@ class CartProduct {
     }
     totalPay() {
         let total = this.cart.reduce((total, item) => total + item.pay(), 0);
-        document.getElementById('total-price').innerText = `Tổng: ${total}vnd`;
+        const totalEl = document.getElementById('total-price');
+
+        const duration = 200; // 0.3s
+        const startTime = performance.now();
+
+        function animate(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const current = Math.floor(progress * total);
+            totalEl.innerText = `Tổng: ${current.toLocaleString('vi')}vnd`;
+            if (progress < 1) requestAnimationFrame(animate);
+        }
+
+        requestAnimationFrame(animate);
+
         return total;
     }
+
     change(index, input) {
         this.cart[index].quantity += input;
         if (this.cart[index].quantity === 0) {
@@ -95,8 +110,11 @@ let myCart = new CartProduct();
 myCart.show();
 let pay = document.getElementById('btn-pay');
 pay.addEventListener('click', () => {
+    if (window.confirm(' Xác nhận mua hàng?') === false) return;
     alert(
-        `Cảm ơn đã mua hàng.\nTổng giá trị bạn cần thanh toán là: ${myCart.totalPay()}vnd`
+        `Cảm ơn đã mua hàng.\nTổng giá trị bạn cần thanh toán là: ${myCart
+            .totalPay()
+            .toLocaleString('vi')}vnd`
     );
     myCart.cart.length = 0;
     myCart.show();
@@ -181,7 +199,9 @@ class ManagerShop {
 
             let productPrice = document.createElement('div');
             productPrice.className = 'product-price';
-            productPrice.innerText = `${product.price} vnd`;
+            productPrice.innerText = `${product.price.toLocaleString(
+                'vi'
+            )} vnd`;
 
             let buttonAdd = document.createElement('button');
             buttonAdd.className = 'add-to-cart-btn';
