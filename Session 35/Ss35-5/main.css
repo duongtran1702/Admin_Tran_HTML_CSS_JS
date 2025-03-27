@@ -1,0 +1,239 @@
+nav div {
+    font-size: 20px;
+    font-weight: bold;
+}
+#btn-add-category {
+    background-color: #4094f7;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#btn-add-category:hover{
+    background-color: #0077ff;
+    
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+section {
+    width: 90%;
+    background-color: #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+body {
+    padding: 20px 0px;
+    display: flex;
+    justify-content: center;
+}
+main select {
+    
+    padding: 3px;
+    border-radius: 4px;
+    width: 150px;
+}
+main input {
+    border: none;
+    outline: none;
+    width: 160px;
+    font-size: 12px;
+    padding: 5px;
+    background-color: white;
+}
+#input {
+    padding: 1px;
+    border-radius: 4px;
+    width: fit-content;
+    display: flex;
+    background-color: white;
+    align-items: center;
+    border: 1px solid #767575;
+}
+main {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+#search {
+    color: #767575;
+    padding-right: 10px;
+    cursor: pointer;
+}
+#search:hover {
+    transform: scale(1.05);
+}
+table {
+    padding: 10px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+}
+thead :nth-child(1) {
+    background-color: #f3f3f3;
+}
+.td-1 {
+    width: 20%;
+    padding-left: 20px;
+}
+.td-4 {
+    padding: 0px 10px;
+    width: 15%;
+}
+.td-3 {
+    width: 30%;
+}
+.td-3 .off {
+    background-color: rgb(255, 207, 207);
+    padding: 2px 8px;
+    width: fit-content;
+    border-radius: 10px;
+    color: rgb(253, 42, 42);
+}
+.td-3 .on {
+    background-color: rgb(207, 255, 228);
+    padding: 2px 8px;
+    width: fit-content;
+    border-radius: 10px;
+    color: rgb(70, 253, 42);
+}
+td {
+    padding: 10px 0px;
+}
+.td-4 i {
+    margin: 0px 8px;
+    cursor: pointer;
+}
+.td-4 i:hover {
+    transform: scale(1.2);
+}
+#clear {
+    color: red;
+}
+#update {
+    color: rgba(232, 232, 22, 0.867);
+}
+#active-on {
+    border-radius: 50%;
+}
+input[type='radio'] {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #414141;
+    border-radius: 50%; /* Biến thành hình tròn */
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Khi radio được chọn */
+input[type='radio']:checked {
+    background-color: #2f8df8; /* Nền xanh */
+    border-color: #2f8df8;
+}
+
+/* Dấu tích trắng */
+input[type='radio']:checked::before {
+    content: '✔';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* Màu trắng */
+    font-size: 9px;
+}
+#modal {
+    min-width:400px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+    z-index: 1001;
+}
+#modal nav .modal-name {
+    font-size: 20px;
+    font-weight: 600;
+}
+#close{
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+}
+#close:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+#modal section {
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+    gap: 20px;
+}
+span {
+    display: flex;
+}
+#modal label {
+    font-weight: 600;
+}
+#modal input[type='text'] {
+    height: 24px;
+    width: 95%;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 3px #aaaaaa;
+}
+.empty-content {
+    border: 1.5px solid red !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+#modal input[type='text']:focus {
+    outline: 2px solid rgb(21, 21, 252) !important;
+    border: none !important;
+}
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    visibility:hidden;
+    opacity: 0;
+}
+#noti-1,#noti-2{
+    display: none;
+    color: red;
+}
+footer{
+    width: 95%;
+    padding-top: 15px;
+    border-top: 1px solid #aaaaaa;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+#btn-add-content{
+    background-color: #388ff4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 8px;
+    cursor: pointer;
+}
+button:hover{
+    transform: scale(1.05);
+}

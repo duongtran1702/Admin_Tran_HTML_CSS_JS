@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="main.css" />
+        <script
+            src="https://kit.fontawesome.com/e724c329aa.js"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <section id="All-container">
+            <div id="overlay">
+                <div id="modal">
+                    <nav>
+                        <div id="modal-name">Thêm mới danh mục</div>
+                        <button id="close">x</button>
+                    </nav>
+                    <label for="category-code">Mã danh mục</label>
+                    <input
+                        type="text"
+                        id="category-code"
+                        name="code-category"
+                    />
+                    <div id="noti-1">Mã danh mục không được để trống</div>
+
+                    <label for="category-name">Tên danh mục</label>
+                    <input type="text" id="category-name" />
+                    <div id="noti-2">Tên danh mục không được để trống</div>
+                    
+                    <label for="active-on">Trạng thái</label>
+                    <section>
+                        <span
+                            ><input
+                                type="radio"
+                                id="active-on"
+                                name="status"
+                                value="true"
+                                checked
+                            />Đang hoạt động</span
+                        >
+                        <span
+                            ><input
+                                type="radio"
+                                id="active-off"
+                                name="status"
+                                value="false"
+                            />Ngưng hoạt động</span
+                        >
+                    </section>
+                    <footer>
+                        
+                        <button id="btn-add-content">Thêm</button>
+                    </footer>
+                </div>
+            </div>
+            <nav>
+                <div>Danh mục</div>
+                <button id="btn-add-category">Thêm mới danh mục</button>
+            </nav>
+            <main>
+                <select name="" id="active">
+                    <option value="true">Đang hoạt động</option>
+                    <option value="false">Ngưng hoạt động</option>
+                    <option value="" selected>Tất cả</option>
+                </select>
+                <div id="input">
+                    <input
+                        type="text"
+                        placeholder="Tìm kiếm danh mục theo tên"
+                        name="search"
+                    />
+                    <i class="fa-solid fa-magnifying-glass" id="search"></i>
+                </div>
+            </main>
+            <table>
+                <thead>
+                    <tr>
+                        <td class="td-1">Mã danh mục</td>
+                        <td>Tên danh mục</td>
+                        <td>Trạng thái</td>
+                        <td>Chức năng</td>
+                    </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+        </section>
+
+        <script src="main.js"></script>
+    </body>
+</html>

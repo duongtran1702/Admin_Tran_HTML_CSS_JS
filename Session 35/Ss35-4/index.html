@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Danh sách nhân viên</title>
+        <style>
+            /* Thiết lập font chữ và căn giữa nội dung */
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+            }
+
+            /* Cấu trúc bảng */
+            table {
+                width: 50%;
+                margin: 20px auto;
+                border-collapse: collapse;
+            }
+
+            /* Thiết lập đường viền và padding cho ô bảng */
+            th,
+            td {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            /* Nền màu xám nhạt cho tiêu đề cột */
+            th {
+                background-color: #f2f2f2;
+            }
+
+            /* Kiểu dáng của ô nhập dữ liệu */
+            input {
+                padding: 5px;
+                margin: 5px;
+            }
+
+            /* Kiểu dáng của nút bấm */
+            button {
+                padding: 5px 10px;
+                cursor: pointer;
+            }
+
+            /* Khu vực phân trang */
+            .pagination {
+                margin-top: 10px;
+            }
+
+            /* Nút phân trang */
+            .pagination button {
+                margin: 2px;
+                padding: 5px 10px;
+                border: 1px solid #ddd;
+                background-color: white;
+                cursor: pointer;
+            }
+
+            /* Nút phân trang đang được chọn */
+            .pagination button.active {
+                background-color: blue;
+                color: white;
+            }
+
+            button:disabled {
+                cursor: default; /* Đổi thành con trỏ bình thường */
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Danh sách nhân viên Rikkei</h2>
+
+        <!-- Form nhập nhân viên mới -->
+        <input type="text" id="name" placeholder="Tên nhân viên" />
+        <input type="text" id="position" placeholder="Chức vụ" />
+        <button onclick="addEmployee()">Thêm nhân viên</button>
+
+        <!-- Bảng hiển thị danh sách nhân viên -->
+        <table>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên</th>
+                    <th>Chức vụ</th>
+                </tr>
+            </thead>
+            <tbody id="employeeTable"></tbody>
+        </table>
+
+        <!-- Vùng chứa các nút phân trang -->
+        <div class="pagination" id="pagination"></div>
+
+        <!-- Nhúng file JavaScript -->
+        <script>
+            // Lấy danh sách nhân viên từ localStorage, nếu chưa có thì sử dụng danh sách mặc định
+            let employees = JSON.parse(localStorage.getItem('employees')) || [
+                { name: 'Nguyễn Văn A', position: 'Developer' },
+                { name: 'Trần Thị B', position: 'Designer' },
+                { name: 'Phạm Văn C', position: 'Project Manager' },
+                { name: 'Lê Thị D', position: 'Tester' },
+                { name: 'Hoàng Văn E', position: 'Data Analyst' },
+                { name: 'Ngô Thị F', position: 'HR' },
+                { name: 'Phan Văn G', position: 'DevOps' },
+                { name: 'Lý Văn H', position: 'Support' },
+                { name: 'Đặng Thị I', position: 'Marketing' },
+                { name: 'Vũ Văn J', position: 'Accountant' },
+            ];
+
+            const itemsPerPage = 3; // Số nhân viên hiển thị trên mỗi trang
+            let currentPage = 1; // Trang hiện tại
+
+            // Hàm lưu danh sách nhân viên vào localStorage
+            function saveEmployees() {
+                localStorage.setItem('employees', JSON.stringify(employees));
+            }
+
+            // Hàm hiển thị danh sách nhân viên theo từng trang
+            function renderEmployees(page) {
+                currentPage = page; // Cập nhật trang hiện tại
+
+                // Tính vị trí bắt đầu và kết thúc cho danh sách nhân viên trên trang hiện tại
+                const startIndex = (page - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+
+                // Lấy danh sách nhân viên cần hiển thị trên trang này
+                const employeesToShow = employees.slice(startIndex, endIndex);
+
+                // Lấy phần tử tbody của bảng để hiển thị danh sách nhân viên
+                const tableBody = document.getElementById('employeeTable');
+
+                // Xóa dữ liệu cũ trước khi thêm dữ liệu mới
+                tableBody.innerHTML = '';
+
+                // Duyệt qua danh sách nhân viên cần hiển thị và thêm vào bảng
+                employeesToShow.forEach((emp, index) => {
+                    let row = `<tr>
+                    <td>${startIndex + index + 1}</td> <!-- STT tự động tăng -->
+                    <td>${emp.name}</td> <!-- Hiển thị tên nhân viên -->
+                    <td>${emp.position}</td> <!-- Hiển thị chức vụ -->
+                </tr>`;
+                    tableBody.innerHTML += row;
+                });
+
+                // Gọi hàm hiển thị phân trang
+                renderPagination();
+            }
+
+            // Hàm hiển thị nút phân trang
+            function renderPagination() {
+                // Tính tổng số trang
+                const totalPages = Math.ceil(employees.length / itemsPerPage);
+
+                // Lấy phần tử div chứa các nút phân trang
+                const paginationDiv = document.getElementById('pagination');
+
+                // Xóa các nút phân trang cũ trước khi hiển thị lại
+                paginationDiv.innerHTML = '';
+
+                // Tạo nút Previous (trang trước)
+                let prevButton = `<button onclick="changePage(${
+                    currentPage - 1
+                })" ${currentPage === 1 ? 'disabled' : ''}>Previous</button>`;
+                paginationDiv.innerHTML += prevButton;
+
+                // Tạo các nút số trang (1, 2, 3, ...)
+                for (let i = 1; i <= totalPages; i++) {
+                    let pageButton = `<button onclick="changePage(${i})" class="${
+                        currentPage === i ? 'active' : ''
+                    }">${i}</button>`;
+                    paginationDiv.innerHTML += pageButton;
+                }
+
+                // Tạo nút Next (trang tiếp theo)
+                let nextButton = `<button onclick="changePage(${
+                    currentPage + 1
+                })" ${
+                    currentPage === totalPages ? 'disabled' : ''
+                }>Next</button>`;
+                paginationDiv.innerHTML += nextButton;
+            }
+
+            // Hàm thay đổi trang khi bấm vào nút phân trang
+            function changePage(page) {
+                // Tính tổng số trang
+                const totalPages = Math.ceil(employees.length / itemsPerPage);
+
+                // Chỉ thay đổi trang nếu trang hợp lệ
+                if (page >= 1 && page <= totalPages) {
+                    renderEmployees(page);
+                }
+            }
+
+            // Hàm thêm nhân viên mới vào danh sách
+            function addEmployee() {
+                // Lấy giá trị từ ô nhập
+                const name = document.getElementById('name').value.trim();
+                const position = document
+                    .getElementById('position')
+                    .value.trim();
+
+                // Kiểm tra nếu nhập đủ thông tin thì thêm vào danh sách
+                if (name && position) {
+                    employees.push({ name, position }); // Thêm vào mảng
+                    saveEmployees(); // Lưu vào localStorage
+                    renderEmployees(currentPage); // Cập nhật danh sách
+                    document.getElementById('name').value = ''; // Xóa ô nhập
+                    document.getElementById('position').value = '';
+                } else {
+                    alert('Vui lòng nhập đủ thông tin!'); // Hiển thị cảnh báo nếu thiếu dữ liệu
+                }
+            }
+
+            // Khi trang tải lần đầu, hiển thị trang 1
+            renderEmployees(1);
+        </script>
+    </body>
+</html>

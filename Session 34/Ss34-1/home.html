@@ -48,6 +48,19 @@
                 padding-left: 5px;
                 display: none;
             }
+            footer {
+                display: flex;
+                justify-content: space-between;
+                padding: 0px 5px;
+            }
+            a {
+                font-weight: 600;
+                color: rgb(13, 150, 234);
+                text-decoration: none;
+            }
+            #sign-up:hover{
+                color: rgb(13, 113, 234);
+            }
         </style>
     </head>
     <body>
@@ -58,7 +71,13 @@
             <input type="text" id="email" />
 
             <label for="">Password:</label>
-            <input type="text" id="password" />
+            <input type="password" id="password" />
+
+            <footer>
+                <a href="">Forgot password</a>
+                <div>or</div>
+                <a href="index.html" id="sign-up">Sign up</a>
+            </footer>
 
             <div id="notification"></div>
             <button>Login</button>
@@ -96,7 +115,7 @@
                     noti.innerText = 'Login sucessfully ! Welcome';
                     noti.style.display = 'flex';
                     noti.style.color = 'rgb(65, 244, 71)';
-                    window.location.href="hello.html"
+                    window.location.href = 'hello.html';
                     return;
                 } else {
                     noti.innerText =

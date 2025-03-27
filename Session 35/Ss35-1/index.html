@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Session 35 - Index</title>
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-family: Arial, sans-serif;
+            }
+            h1 {
+                text-align: center;
+            }
+            .input-area {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 20px;
+                gap: 10px;
+                margin: 0 auto;
+                border-radius: 5px;
+            }
+            input[type='text'] {
+                width: 70%;
+                max-width: 250px;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+            button {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                background-color: #007bff;
+                color: #fff;
+                cursor: pointer;
+            }
+            .task-area {
+                padding: 5px 10px;
+                box-sizing: border-box;
+                border-bottom: 1px solid #ccc;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .btn-area {
+                display: flex;
+                gap: 10px;
+            }
+            .btn-update {
+                padding: 5px 10px;
+                border: none;
+                border-radius: 5px;
+                background-color: #28a745;
+                color: #fff;
+                cursor: pointer;
+            }
+            .btn-delete {
+                padding: 5px 10px;
+                border: none;
+                border-radius: 5px;
+                background-color: #dc3545;
+                color: #fff;
+                cursor: pointer;
+                margin-left: 10px;
+            }
+            #list-task {
+                border-radius: 5px;
+                background-color: #dbdbdb;
+                width: 400px;
+                display: flex;
+                flex-direction: column;
+                margin-top: 20px;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>To-Do List K24</h1>
+        <div class="input-area">
+            <input type="text" id="task" placeholder="Nhập công việc" />
+            <button id="add">Thêm</button>
+        </div>
+        <div id="list-task"></div>
+
+        <script>
+            let storeTasks = [];
+            function load() {
+                let tasks = localStorage.getItem('listTodo');
+                return tasks ? JSON.parse(tasks) : [];
+            }
+
+            function save(array) {
+                localStorage.setItem('listTodo', JSON.stringify(array));
+            }
+
+            class Task {
+                constructor(content) {
+                    this.content = content;
+                }
+            }
+
+            class Manager {
+                constructor() {
+                    this.tasks = load();
+                    if (this.tasks.length === 0) {
+                        this.tasks.push(new Task('Học HTML'));
+                        save(this.tasks);
+                    }
+                    this.renderTask();
+                    this.add();
+                }
+                renderTask() {
+                    this.tasks = load();
+                    console.log(this.tasks);
+
+                    let listTask = document.getElementById('list-task');
+                    listTask.innerHTML = '';
+                    this.tasks.forEach((task, index) => {
+                        let taskArea = document.createElement('div');
+                        taskArea.className = 'task-area';
+
+                        let taskDiv = document.createElement('div');
+                        taskDiv.innerHTML = task.content;
+                        let btnArea = document.createElement('div');
+
+                        let btnUpdate = document.createElement('button');
+                        btnUpdate.className = 'btn-update';
+                        btnUpdate.innerHTML = 'Sửa';
+                        btnUpdate.addEventListener('click', () => {
+                            let newContent = prompt(
+                                'Nhập nội dung mới:',
+                                task.content
+                            );
+                            if (newContent) {
+                                taskDiv.innerHTML = newContent;
+                                this.tasks[index].content = newContent;
+                                save(this.tasks);
+                            }
+                        });
+
+                        let btnDelete = document.createElement('button');
+                        btnDelete.className = 'btn-delete';
+                        btnDelete.innerHTML = 'Xóa';
+                        btnDelete.addEventListener('click', () => {
+                            this.tasks.splice(index, 1);
+                            save(this.tasks);
+                            this.renderTask();
+                        });
+
+                        btnArea.appendChild(btnUpdate);
+                        btnArea.appendChild(btnDelete);
+
+                        taskArea.appendChild(taskDiv);
+                        taskArea.appendChild(btnArea);
+
+                        listTask.appendChild(taskArea);
+                    });
+                    save(this.tasks);
+                }
+                add() {
+                    let btnAdd = document.getElementById('add');
+                    btnAdd.addEventListener('click', () => {
+                        let task = document.getElementById('task').value.trim();
+                        if (task) {
+                            this.tasks.push(new Task(task));
+                            save(this.tasks);
+                            this.renderTask();
+                            document.getElementById('task').value = '';
+                        }
+                    });
+                }
+            }
+            let manager = new Manager();
+        </script>
+    </body>
+</html>
