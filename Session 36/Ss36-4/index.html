@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Danh sách sản phẩm</title>
+        <link rel="stylesheet" href="./main.css" />
+    </head>
+    <body>
+        <!-- Thanh Navbar -->
+        <nav id="navbar"></nav>
+
+        <div id="container">
+            <div id="product-list"></div>
+        </div>
+    </body>
+    <script>
+        class Product {
+            constructor(image, name, price) {
+                this.image = image;
+                this.name = name;
+                this.price = price;
+            }
+        }
+        class Manage {
+            constructor() {
+                this.products = [
+                    new Product(
+                        'https://imgs.search.brave.com/vtFBWgdZjcpMjdO2YfoXY3CGCpzer6t_UV7QXB8z8x0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/c2hvcGlmeS5jb20v/cy9maWxlcy8xLzA0/NTYvNTA3MC82NTgx/L2ZpbGVzL3RvcC0y/My1tYXUtZ2lheS1z/bmVha2VyLWRhbmct/ZHVvYy1zYW4tbHVu/Zy1uaGF0LW5hbS0y/MDIyXzYwMHg2MDAu/anBnP3Y9MTY2Njk0/MDE4OA',
+                        'Giày Sneaker',
+                        '1.200.000đ'
+                    ),
+                    new Product(
+                        'https://imgs.search.brave.com/wE9-oIFuVaPAVHk3wR8CQTsPpDV6wGMqu4xnW9uMPjQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcm9k/dWN0LmhzdGF0aWMu/bmV0LzIwMDAwMDQz/OTg1My9wcm9kdWN0/L2NlY2I1M2Y5LWIy/MzgtNDViMC1iZWVh/LWQwOTVkZjY0MzY5/ZF9hOWYxMjRmOTQ3/MzQ0ZjJlYjVhZjc5/ZTVjNTQ3Y2ExYV9s/YXJnZS5qcGc',
+                        'Đồng hồ nam',
+                        '2.500.000đ'
+                    ),
+                    new Product(
+                        'https://imgs.search.brave.com/OtEecSvDTRo3MaS3k2iuqnLnyzHxfp3QO8X0oVWLAUY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/MzFEaExYZzA2RUwu/anBn',
+                        'Laptop Gaming',
+                        '15.000.000đ'
+                    ),
+                ];
+                this.render();
+                this.changeMode();
+            }
+            render() {
+                let body = document.body;
+                let navbar = document.getElementById('navbar');
+                navbar.innerHTML = `<h1>Danh Sách Sản Phẩm</h1>
+            <button id="dark-mode-toggle">
+                <img
+                    src="https://img.icons8.com/ios-filled/50/sun.png"
+                    alt="Dark Mode"
+                />
+            </button>`;
+                let container = document.getElementById('container');
+                let productList = document.getElementById('product-list');
+                productList.innerHTML = '';
+                this.products.forEach((temp) => {
+                    let productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    productCard.innerHTML = `
+                    <div class="product-image">
+                        <img
+                            src="${temp.image}"
+                            alt="${temp.name}"
+                        />
+                    </div>
+                    <div class="product-info">
+                        <h2>${temp.name}</h2>
+                        <p class="price">${temp.price}</p>
+                        <button class="buy-btn">Mua ngay</button>
+                    </div>
+                    `;
+                    productList.appendChild(productCard);
+                });
+                container.appendChild(productList);
+            }
+            changeMode() {
+                let mode = document.getElementById('dark-mode-toggle');
+                let body = document.body;
+
+                if (localStorage.getItem('darkMode') === 'enabled') {
+                    body.classList.add('dark-mode');
+                    this.applyDarkModeStyles();
+                }
+
+                mode.addEventListener('click', () => {
+                    body.classList.toggle('dark-mode');
+
+                    if (body.classList.contains('dark-mode')) {
+                        localStorage.setItem('darkMode', 'enabled');
+                    } else {
+                        localStorage.setItem('darkMode', 'disabled');
+                    }
+                    this.applyDarkModeStyles();
+                });
+            }
+            applyDarkModeStyles() {
+                let body = document.body;
+                let isDark = body.classList.contains('dark-mode');
+
+                document.querySelector('h1').style.color = isDark
+                    ? 'white'
+                    : 'black';
+                document
+                    .querySelectorAll('h2')
+                    .forEach(
+                        (el) => (el.style.color = isDark ? 'white' : 'black')
+                    );
+                document
+                    .querySelectorAll('.product-card')
+                    .forEach(
+                        (el) =>
+                            (el.style.backgroundColor = isDark
+                                ? '#433c3c'
+                                : 'white')
+                    );
+                document
+                    .querySelectorAll('.buy-btn')
+                    .forEach(
+                        (el) =>
+                            (el.style.backgroundColor = isDark
+                                ? '#E67E22'
+                                : '#3498db')
+                    );
+            }
+        }
+        new Manage();
+    </script>
+</html>

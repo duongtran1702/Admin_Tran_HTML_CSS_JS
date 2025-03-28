@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            section {
+                width: 340px;
+                background-color: #edebeb;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 30px;
+            }
+            #container {
+                width: 100%;
+                background-color: white;
+                height: fit-content;
+                border-radius: 5px;
+            }
+            #container div:nth-child(1) {
+                font-size: 24px;
+                font-weight: 600;
+                text-align: center;
+                padding: 40px 0px 10px 0px;
+                font-family: sans-serif;
+            }
+            #container div:nth-child(2) {
+                padding: 20px 0px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 15px;
+            }
+            button {
+                height: 24px;
+                background-color: rgb(62, 71, 249);
+                border: none;
+                width: 40px;
+                color: white;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+            input {
+                height: 24px;
+                width: 60%;
+                border: none;
+                box-shadow: 0 0 3px #868686;
+                outline: none;
+                border-radius: 3px;
+                padding: 2px;
+            }
+            input:focus {
+                outline: 2px solid rgb(39, 39, 252);
+            }
+        </style>
+    </head>
+    <body>
+        <section id="saveName">
+            <div id="container">
+                <div>Nhập tên của bạn</div>
+                <div>
+                    <input type="text" id="content" />
+                    <button id="save">Lưu</button>
+                </div>
+            </div>
+        </section>
+        <script>
+            let btnSave = document.getElementById('save');
+            let temp = localStorage.getItem('name');
+            let name = temp ? JSON.parse(temp) : null;
+
+            if (name) {
+                document.body.style.opacity = '0'; // Mờ dần trước khi chuyển trang
+                setTimeout(() => {
+                    window.location.href = 'output.html';
+                }, 300); // Chuyển trang sau 300ms
+            }
+
+            btnSave.onclick = function () {
+                let content = document.getElementById('content').value;
+
+                if (content) { 
+        localStorage.setItem('name', JSON.stringify(content));
+        
+        // Thêm hiệu ứng mờ dần trước khi chuyển trang
+        document.body.style.transition = "opacity 0.3s";
+        document.body.style.opacity = "0";
+        
+        setTimeout(() => {
+            window.location.href = 'output.html';
+        }, 300); // Chuyển trang sau 300ms
+    } else {
+        alert('Vui lòng nhập tên!');
+    }
+                document.getElementById('content').value = '';
+            };
+        </script>
+    </body>
+</html>

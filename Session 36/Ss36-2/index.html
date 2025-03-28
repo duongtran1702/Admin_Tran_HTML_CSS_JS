@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            img {
+                width: 140px;
+                height: 90px;
+                border-radius: 5px;
+            }
+            .dish {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                width: 100%;
+                max-width: 300px;
+                height: fit-content;
+                padding: 20px;
+                box-shadow: 0 0 3px #cecece;
+                border-radius: 10px;
+            }
+            .detail-dish {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .detail-dish div:nth-child(2) {
+                display: flex;
+                align-items: center;
+            }
+            .detail-dish div:nth-child(1) {
+                font-weight: 600;
+                font-size: 18px;
+            }
+            button {
+                margin-top: 2px;
+                cursor: pointer;
+                width: fit-content;
+                padding: 5px 8px;
+                color: white;
+                background-color: rgb(8, 188, 50);
+                border: none;
+                border-radius: 5px;
+            }
+            #container {
+                background-color: #ffffff;
+            }
+            #gallery-food{
+                display: grid;
+                grid-template-columns: repeat(auto-fill,minmax(340px,1fr));
+                gap: 20px;
+            }
+            h1{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <section id="container">
+            <h1>Bạn thích món ăn nào nhất ? ☕</h1>
+            <section id="gallery-food">
+                
+            </section>
+        </section>
+        <script>
+            function save(array) {
+                localStorage.setItem('Dish', JSON.stringify(array));
+            }
+            function load() {
+                let dish = localStorage.getItem('Dish');
+                return dish ? JSON.parse(dish) : [];
+            }
+            class Dish {
+                constructor(image, name, numLike) {
+                    this.image = image;
+                    this.name = name;
+                    this.numLike = numLike;
+                }
+            }
+            class Gallery {
+                constructor() {
+                    this.gallery = load();
+                    if (this.gallery.length === 0) {
+                        this.gallery.push(
+                            new Dish(
+                                'https://mms.img.susercontent.com/vn-11134513-7r98o-lsv96my1vwsk8f@resize_ss1242x600!@crop_w1242_h600_cT',
+                                'Bún bò huế',
+                                0
+                            )
+                        );
+                        this.gallery.push(
+                            new Dish(
+                                'https://luhanhvietnam.com.vn/du-lich/vnt_upload/news/12_2023/quan_pho_ngon_o_nam_dinh.jpeg',
+                                'Phở Nam Định',
+                                0
+                            )
+                        );
+                        this.gallery.push(
+                            new Dish(
+                                'https://static.vinwonders.com/production/com-tam-sai-gon-thumb.jpg',
+                                'Cơm tấm Sài Gòn',
+                                0
+                            )
+                        );
+                        save(this.gallery);
+                    }
+                    this.render();
+                }
+                render() {
+                    this.gallery = load();
+                    let galleryFood = document.getElementById('gallery-food');
+                    console.log(galleryFood);
+                    galleryFood.innerHTML = '';
+                    this.gallery.forEach((temp, index) => {
+                        let dish = document.createElement('div');
+                        dish.className = 'dish';
+
+                        dish.innerHTML = `
+                    <img
+                        src="${temp.image}"
+                        alt=""
+                    />
+                    <div class="detail-dish">
+                        <div>${temp.name}</div>
+                        <div>
+                            <span style="color: red; font-size: 20px"
+                                >&hearts;</span
+                            >&nbsp;${temp.numLike} lượt thích
+                        </div>
+                         <button class="like">Thích +1</button>
+                </div>`;
+
+                        let btn = dish.querySelector('.like');
+                        btn.addEventListener('click', () => {
+                            this.like(index);
+                        });
+
+                        galleryFood.appendChild(dish);
+                    });
+                }
+                like(index) {
+                    this.gallery[index].numLike += 1;
+                    save(this.gallery);
+                    this.render();
+                }
+            }
+            new Gallery()
+        </script>
+    </body>
+</html>

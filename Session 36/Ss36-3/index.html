@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            #color-1 {
+                background-color: #e74c3c;
+            }
+            #color-2 {
+                background-color: #3498db;
+            }
+            #color-3 {
+                background-color: #f1c40f;
+            }
+            #color-4 {
+                background-color: #9b59b6;
+            }
+            button {
+                width: 50px;
+                padding: 6px 6px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                border: 1px solid rgb(79, 63, 63);
+            }
+            section {
+                border-radius: 5px;
+                display: flex;
+                width: 40%;
+                padding: 100px;
+                box-shadow: 0 0 3px #838383;
+                flex-direction: column;
+                justify-content: center;
+                height: fit-content;
+            }
+            #color {
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+            }
+            h1 {
+                text-align: center;
+            }
+            body{
+                display: flex;
+                justify-content: center;
+                height: 100vh;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h1>Chọn màu bạn yêu thích</h1>
+            <div id="color">
+                <button onclick="changeColor('#E74C3C') " id="color-1">
+                    Đỏ
+                </button>
+                <button onclick="changeColor('#3498DB')" id="color-2">
+                    Xanh
+                </button>
+                <button onclick="changeColor('#F1C40F')" id="color-3">
+                    Vàng
+                </button>
+                <button onclick="changeColor('#9B59B6')" id="color-4">
+                    Tím
+                </button>
+            </div>
+        </section>
+        <script>
+            function save(color) {
+                localStorage.setItem('color', JSON.stringify(color));
+            }
+            function load() {
+                let color = localStorage.getItem('color');
+                return color ? JSON.parse(color) : '';
+            }
+            let section = document.querySelector('section');
+            section.style.backgroundColor = load();
+
+            function changeColor(color) {
+                save(color);
+                let section = document.querySelector('section');
+                section.style.backgroundColor = load();
+            }
+        </script>
+    </body>
+</html>
