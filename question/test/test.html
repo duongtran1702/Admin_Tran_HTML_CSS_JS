@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Chọn ảnh và lấy đường dẫn</title>
+</head>
+<body>
+
+<!-- Nút để kích hoạt hộp thoại chọn ảnh -->
+<button onclick="document.getElementById('fileInput').click()">Chọn ảnh</button>
+
+<!-- Input file ẩn đi -->
+<input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="getFileLink(event)">
+
+<!-- Hiển thị đường dẫn ảnh -->
+<p id="filePath"></p>
+
+<script>
+  let selectedFilePath = ''; // Biến lưu đường dẫn file
+
+  // Hàm lấy đường dẫn file khi người dùng chọn ảnh
+  function getFileLink(event) {
+    const file = event.target.files[0]; // Lấy file được chọn
+
+    if (file) {
+      selectedFilePath = file.name; // Lấy tên file (hoặc đường dẫn file)
+      
+      // Hiển thị đường dẫn (hoặc tên file) lên màn hình
+      document.getElementById('filePath').innerText = `Đường dẫn file: ${selectedFilePath}`;
+
+      // Nếu bạn muốn lấy đường dẫn đầy đủ từ URL (thường cho trình duyệt)
+      // selectedFilePath = URL.createObjectURL(file);
+    }
+  }
+</script>
+
+</body>
+</html>
